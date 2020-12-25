@@ -1,5 +1,12 @@
 name: denoify
-on: [push]
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - stable
+
 jobs:
   denoify-and-test:
     runs-on: ubuntu-latest
