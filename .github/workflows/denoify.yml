@@ -26,7 +26,7 @@ jobs:
       - name: Test types with Deno
         run: cd denoify && deno run deno.ts
       - name: Commit Changes
-        run: cd denoify/deno && git config --local user.email "action@github.com" && git config --local user.name "GitHub Action" && git init && git checkout -b deno && git remote add origin ${{ github.repository }} && git add --all && git commit -m "Deploy Deno version"
+        run: cd denoify/deno && git config --global user.email "action@github.com" && git config --global user.name "GitHub Action" && git init && git checkout -b deno && git remote add origin ${{ github.repository }} && git add --all && git commit -m "Deploy Deno version"
       - name: Deploy Deno version
         uses: ad-m/github-push-action@master
         with: 
