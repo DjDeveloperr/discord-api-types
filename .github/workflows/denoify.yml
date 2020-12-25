@@ -32,4 +32,5 @@ jobs:
         with: 
           directory: denoify/deno
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
           branch: deno
