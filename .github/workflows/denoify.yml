@@ -11,10 +11,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
       - name: Clone Denoify repo
-        run: git clone https://github.com/DjDeveloperr/denoify-dapi-types.git .
+        run: git clone https://github.com/DjDeveloperr/denoify-dapi-types.git denoify
       - name: Clone types repo
-        run: git clone https://github.com/discordjs/discord-api-types.git repo
+        run: cd denoify && git clone https://github.com/discordjs/discord-api-types.git repo
       - name: Convert types
-        run: node main.js
+        run: cd denoify && node main.js
       - name: Test types with Deno
-        run: deno run deno.ts
+        run: cd denoify && deno run deno.ts
