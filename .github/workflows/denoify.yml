@@ -11,6 +11,8 @@ jobs:
   denoify-and-test:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Repo
+        uses: actions/checkout@v2
       - name: Setup Deno
         uses: denolib/setup-deno@v2.3.0
       - name: Setup Node
@@ -24,6 +26,7 @@ jobs:
       - name: Test types with Deno
         run: cd denoify && deno run deno.ts
       - name: Deploy Deno version
-        uses: actions/checkout@v2
-        with:
-          ref: deno
+        uses: ad-m/github-push-action@master
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: deno
