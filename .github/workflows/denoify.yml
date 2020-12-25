@@ -1,0 +1,20 @@
+name: denoify
+on: [push]
+jobs:
+  Denoify and Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2.3.0
+      - name: Setup Node
+        uses: actions/setup-node@v1
+      - name: Clone Denoify repo
+        run: git clone https://github.com/DjDeveloperr/denoify-dapi-types.git .
+      - name: Clone types repo
+        run: git clone https://github.com/discordjs/discord-api-types.git repo
+      - name: Convert types
+        run: node main.js
+      - name: Test types with Deno
+        run: deno run deno.ts
