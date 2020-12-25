@@ -25,8 +25,11 @@ jobs:
         run: cd denoify && node main.js
       - name: Test types with Deno
         run: cd denoify && deno run deno.ts
+      - name: Commit Changes
+        run: cd denoify/deno && git init && git checkout -b deno && git remote add origin ${{ github.repository }} && git add --all && git commit -m "Deploy Deno version"
       - name: Deploy Deno version
         uses: ad-m/github-push-action@master
         with: 
+          directory: denoify/deno
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: deno
